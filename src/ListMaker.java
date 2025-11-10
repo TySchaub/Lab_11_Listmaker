@@ -29,7 +29,7 @@ public class ListMaker {
                     insertItem();
                     break;
                 case "P":
-                    System.out.println("You chose to print the list.");
+                    printList();
                     break;
                 case "Q":
                     System.exit(0);
@@ -93,10 +93,17 @@ public class ListMaker {
             return;
         }
         int lineNum = SafeInput.getInt(in, "Enter the line number to insert (1 to " + lines.size() + "): ");
+        String item = SafeInput.getNonZeroLengthString(in, "Enter the line to insert: ");
+        lines.add(lineNum - 1, item);
         if (lineNum < 1 || lineNum > lines.size())
         {
             System.out.println("Invalid line number. Please try again.");
             return;
         }
+    }
+
+    private static void printList()
+    {
+        showList();
     }
 }
